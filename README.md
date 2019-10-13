@@ -60,5 +60,27 @@ As mentioned earlier, pricing data has been populated in the DynamoDB table. The
 ### Responds to an HTTP GET request at /products/{id} and delivers product data as JSON
 1. In a browser of your choice, go to http://localhost:8080/products/{id}
 2. See that JSON data is returned for the requested product
+![](https://raw.githubusercontent.com/Bmackent/Target-Case-Study/master/GetRequest.jpg)
 
-![](https://raw.githubusercontent.com/bmackent/myRetail-RESTful-service/master/GetRequest.png)
+### BONUS: Accepts an HTTP PUT request at the same path (/products/{id}), containing a JSON request body similar to the GET response, and updates the product’s price in the data store
+1. In a browser of your choice, go to http://localhost:8080/products/{id}
+2. See that JSON data is returned and note the current pricing information
+![](https://raw.githubusercontent.com/Bmackent/Target-Case-Study/master/GetRequest.jpg)
+3. Using a method of your choice (I used an application called Postman), send a PUT request to http://localhost:8080/products/{id}. I copied my Postman request below:
+
+        PUT /products/13860428 HTTP/1.1
+        Host: localhost:8080
+        Content-Type: application/json
+        cache-control: no-cache
+        Postman-Token: 716b6baa-8580-4dc0-8171-a67ccf0727ba
+        {
+            "id": 13860428,
+            "name": "The Big Lebowski (Blu-ray)",
+            "productPricingInfo":{
+                "id":13860428,
+                "price":15.99,
+                "currencyCode":"USD"
+            }
+        }
+4. Refresh the page in your browser and see that the data has been updated as per the PUT request
+![](https://raw.githubusercontent.com/Bmackent/Target-Case-Study/master/PutRequest.jpg)
